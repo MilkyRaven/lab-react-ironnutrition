@@ -22,6 +22,13 @@ function App() {
     })
     setFoods(searchedFoods)
   }
+  const deleteFood = (foodName) => {
+    const allFood = [...currentFoods];
+    const newArray = allFood.filter((food) => {
+      return food.name !== foodName
+    })
+    setFoods(newArray)
+  }
   //console.log(foods)
   return (
     <div className="App">
@@ -29,13 +36,16 @@ function App() {
       <NewFood onFoodData={foodDataHandler}></NewFood>
       {currentFoods.map((el) => {
         return (
-          <FoodBox food={{
-            name: el.name,
-            calories: el.calories,
-            image: el.image,
-            servings: el.servings
-          }} />
-         )
+          <div>
+            <FoodBox food={{
+              name: el.name,
+              calories: el.calories,
+              image: el.image,
+              servings: el.servings,
+
+            }} onDelete={deleteFood}/>
+          </div>
+        )
       })}
     </div>
   );

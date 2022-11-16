@@ -2,15 +2,22 @@ import './App.css';
 import foods from './foods.json';
 import React, { useState } from 'react';
 import FoodBox from './components/FoodBox';
-import AddFoodForm from './components/AddFoodForm';
+import NewFood from './components/NewFood'
 
 
 function App() {
   const [currentFoods, setFoods] = useState(foods)
+
+  const foodDataHandler = (foodData) => {
+    console.log(foodData)
+    setFoods((prevState) => {
+      return [...prevState, foodData]
+    })
+  }
   //console.log(foods)
   return (
     <div className="App">
-      <AddFoodForm></AddFoodForm>
+      <NewFood onFoodData={foodDataHandler}></NewFood>
       {currentFoods.map((el) => {
         return (
           <FoodBox food={{

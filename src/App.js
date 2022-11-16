@@ -9,19 +9,15 @@ function App() {
   //console.log(foods)
   return (
     <div className="App">
-      <FoodBox food={{
-        name: "Orange",
-        calories: 85,
-        image: "https://i.imgur.com/abKGOcv.jpg",
-        servings: 1
-      }} />
-      {currentFoods.map((food) => {
+      {currentFoods.map((el) => {
         return (
-          <div>
-            <p>{food.name}</p>
-            <img src={food.image} width={100} alt="a plate of food" />
-          </div>
-        )
+          <FoodBox food={{
+            name: el.name,
+            calories: el.calories,
+            image: el.image,
+            servings: el.servings
+          }} />
+         )
       })}
     </div>
   );

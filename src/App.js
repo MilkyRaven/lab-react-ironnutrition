@@ -2,6 +2,7 @@ import './App.css';
 import foods from './foods.json';
 import React, { useState } from 'react';
 import FoodBox from './components/FoodBox';
+import AddFoodForm from './components/AddFoodForm';
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   //console.log(foods)
   return (
     <div className="App">
+      <AddFoodForm></AddFoodForm>
       {currentFoods.map((el) => {
         return (
           <FoodBox food={{

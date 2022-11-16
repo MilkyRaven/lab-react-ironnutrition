@@ -3,6 +3,7 @@ import foods from './foods.json';
 import React, { useState } from 'react';
 import FoodBox from './components/FoodBox';
 import NewFood from './components/NewFood'
+import Search from './components/Search';
 
 
 function App() {
@@ -14,9 +15,17 @@ function App() {
       return [...prevState, foodData]
     })
   }
+
+  const handleSearch = (value) => {
+    let searchedFoods = [...foods].filter((food) => {
+      return food.name.toLowerCase().includes(value)
+    })
+    setFoods(searchedFoods)
+  }
   //console.log(foods)
   return (
     <div className="App">
+      <Search onSearch={handleSearch}></Search>
       <NewFood onFoodData={foodDataHandler}></NewFood>
       {currentFoods.map((el) => {
         return (
